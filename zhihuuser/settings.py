@@ -70,6 +70,7 @@ DEFAULT_REQUEST_HEADERS = {
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'zhihuuser.pipelines.ZhihuuserPipeline': 300,
+    'scrapy_redis.pipelines.RedisPipeline': 301,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -95,3 +96,14 @@ ITEM_PIPELINES = {
 
 MONGO_URI = 'localhost'
 MONGO_DATABASE = 'zhihu'
+
+# Enables scheduling storing requests queue in redis.
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+
+# Ensure all spiders share same duplicates filter through redis.
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+
+REDIS_HOST = "127.0.0.1"
+REDIS_PORT = "6379"
+# REDIS_URL = 'redis://root:pass@127.0.0.1:6379'
+
