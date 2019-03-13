@@ -97,13 +97,13 @@ ITEM_PIPELINES = {
 MONGO_URI = 'localhost'
 MONGO_DATABASE = 'zhihu'
 
-# Enables scheduling storing requests queue in redis.
+
+# REDIS_HOST = "127.0.0.1"
+# REDIS_PORT = "6379"
+
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
-
-# Ensure all spiders share same duplicates filter through redis.
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+REDIS_URL = 'redis://root:noodles@192.168.149.128:6379'
 
-REDIS_HOST = "127.0.0.1"
-REDIS_PORT = "6379"
-# REDIS_URL = 'redis://root:pass@127.0.0.1:6379'
+SCHEDULER_PERSIST = True
 
